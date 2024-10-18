@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatih Özhan Bloğu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #35424a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background: #35424a;
+            border-radius: 5px;
+        }
+        nav a.active {
+            background: #5c6bc0; /* Aktif sekme rengi */
+        }
+        .tab-content {
+            display: none;
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .active-content {
+            display: block; /* Aktif içerik göster */
+        }
+        #thankYouMessage {
+            display: none;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Fatih Özhan Blok Sayfası</h1>
+    <nav>
+        <a href="#" class="tab-link active" onclick="openTab(event, 'anasayfa')">Ana Sayfa</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'hakkimda')">Hakkımda</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'anket')">Anket</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'Projelerim')">Projelerim</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'iletisim')">İletişim</a>
+    </nav>
+</header>
+
+<div id="anasayfa" class="tab-content active-content">
+    <h2>Ana Sayfa</h2>
+    <p>Bloguma hoş geldiniz! Burada fikrimi ve fikirlerinizin ortak bir yerde bulaşacağı bir blog sayfasıdır.</p>
+</div>
+
+<div id="hakkimda" class="tab-content">
+    <h2>Hakkımda</h2>
+    <p>Benim adım Fatih Özhan.19 yaşındayım ve genel olarak İstanbul'da yaşamaktayım.Düzce Universitesinde bilgisayar mühendisliği bölümünde öğretim görmekteyim.Bu blogu açma sebebim fikirlerin ortak bir yerde toplanıp bu fikirlerin büyütmeye çalışmaktır.Belki bu blog tek kişi tarafından yapılmış gibi gözükse de bu sayfa sizlerin katkılarıyla büyüyebilecek bir sayfadır.İlgi alanlarıma gelicek olursak bir dönem futbol kariyer olup genel anlamda futbol türevlerinden ilgilenmekteyim.Ayrıca sadece futbol alanında değil edebiyat alanında belli çaplı hedeflerim bulunmakta bu hedeflerim arasında şiire duyduğum ilgiden ötürü ilerleyen dönemlerde bir şiir kıtabı çıkarma konusunda hedeflerim mevcuttur.Tekrardan bloğuma hoşgeldiniz.</p>
+</div>
+
+<div id="Projelerim" class="tab-content">
+    <h2>Projelerim</h2>
+    <p>ÇOKK YAKINDA...</p>
+</div>
+
+<div id="anket" class="tab-content">
+    <h2>Anket</h2>
+    <form id="surveyForm" onsubmit="return showThankYouMessage();">
+        <label for="yorum">Bloğumu geliştirmek için fikirlerinizi ve önerilerinizi yazabilirsiniz?</label><br>
+        <textarea id="yorum" name="yorum" rows="4" cols="50" placeholder="Yorumunuzu buraya yazın..."></textarea><br><br>
+        <p>Blogumu nasıl buldunuz? (Birden fazla seçeneği işaretleyebilirsiniz):</p>
+        <label><input type="checkbox" name="feedback" value="Yararlı"> Yararlı</label><br>
+        <label><input type="checkbox" name="feedback" value="Eğlenceli"> Eğlenceli</label><br>
+        <label><input type="checkbox" name="feedback" value="Bilgilendirici"> Bilgilendirici</label><br>
+        <label><input type="checkbox" name="feedback" value="Sıradan"> Sıradan</label><br>
+        <label><input type="checkbox" name="feedback" value="Diğer"> Diğer</label><br>
+        <br>
+        <input type="submit" value="Gönder">
+    </form>
+    <p id="thankYouMessage" style="display: none;">Teşekkürler! Geri bildiriminiz alındı.</p>
+</div>
+
+<div id="iletisim" class="tab-content">
+    <h2>İletişim</h2>
+    <p>Herhangi bir durumda halısahada adam eksik olur, bana burdan ulaşabilirsiniz: fatihozhan29g@gmail.com </p>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        // Tüm sekmeleri gizle
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(content => {
+            content.classList.remove('active-content');
+        });
+
+        // Tüm linklerin aktif sınıfını kaldır
+        const tabLinks = document.querySelectorAll('.tab-link');
+        tabLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Aktif olan sekmeyi göster
+        document.getElementById(tabName).classList.add('active-content');
+        evt.currentTarget.classList.add('active');
+    }
+
+    function showThankYouMessage() {
+        document.getElementById('surveyForm').reset(); // Formu sıfırla
+        document.getElementById('thankYouMessage').style.display = 'block'; // Teşekkür mesajını göster
+        return false; // Formun gönderimini engelle
+    }
+</script>
+
+</body>
+</html>
